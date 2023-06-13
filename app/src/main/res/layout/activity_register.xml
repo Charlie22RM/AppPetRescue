@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editTextText8"
+        android:id="@+id/txt_password"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -20,10 +20,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText7" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_email" />
 
     <EditText
-        android:id="@+id/editTextText7"
+        android:id="@+id/txt_email"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -38,10 +38,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_apellido" />
 
     <EditText
-        android:id="@+id/editTextText5"
+        android:id="@+id/txt_nombre"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -50,7 +50,7 @@
         android:background="@drawable/edittext_background"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="Cédula"
+        android:hint="Nombre"
         android:inputType="text"
         android:textColorHint="@color/purple"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/txt_apellido"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -88,16 +88,16 @@
         android:background="@drawable/edittext_background"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="Nombres"
+        android:hint="Apellido"
         android:inputType="text"
         android:textColorHint="@color/purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombre" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/btn_crear_cuenta"
         android:background="@drawable/button_background"
         style="@android:style/Widget.Button"
         android:textColor="@color/white"
@@ -108,6 +108,6 @@
         android:text="Crear cuenta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText8" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
