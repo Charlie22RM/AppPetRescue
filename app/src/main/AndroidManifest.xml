@@ -13,6 +13,12 @@
         android:theme="@style/Theme.PetRescue"
         tools:targetApi="31">
         <activity
+            android:name=".ConsultarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
