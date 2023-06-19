@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         EditText nombre_tmp = (EditText) findViewById(R.id.txt_nombre);
         EditText apellido_tmp = (EditText) findViewById(R.id.txt_apellido);
         EditText email_tmp = (EditText) findViewById(R.id.txt_email);
-        EditText password_tmp = (EditText) findViewById(R.id.txt_password);
+        EditText password_tmp = (EditText) findViewById(R.id.txt_direccion);
 
         MyOpenHelper dbHelper = new MyOpenHelper(v.getContext());
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
