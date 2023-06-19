@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Item" >
-        <menu >
+    <item
+        android:id="@+id/opc"
+        android:icon="@drawable/baseline_menu_24"
+        android:title="opc"
+        app:showAsAction="always">
+        <menu>
             <item
-                android:id="@+id/1"
-                android:title="Item" />
+                android:id="@+id/opc1"
+                android:title="Perfil" />
             <item
-                android:id="@+id/2"
-                android:title="Item" />
+                android:id="@+id/opc2"
+                android:title="Configuración" />
             <item
-                android:id="@+id/3"
-                android:title="Item" />
+                android:id="@+id/opc3"
+                android:title="Acerca de" />
         </menu>
     </item>
 </menu>
