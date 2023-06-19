@@ -1,22 +1,16 @@
 package com.example.petrescue;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RegisterDogActivity extends AppCompatActivity {
+public class MainAdoptarActivity extends AppCompatActivity {
     private Button registerBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_dog);
+        setContentView(R.layout.activity_main_adoptar);
 
     }
-
 }

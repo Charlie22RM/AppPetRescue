@@ -10,13 +10,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RegisterDogActivity extends AppCompatActivity {
+public class MainAdopcionActivity extends AppCompatActivity {
     private Button registerBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_dog);
+        setContentView(R.layout.activity_main_adopcion);
 
     }
-
 }
