@@ -30,23 +30,18 @@ public class ConsultarActivity extends AppCompatActivity {
         buscarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 buscarUsuario(v);
             }
         });
-
         editarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 editarUsuario(v);
             }
         });
-
         eliminarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 eliminarUsuario(v);
             }
         });
@@ -56,7 +51,6 @@ public class ConsultarActivity extends AppCompatActivity {
 
         MyOpenHelper dbHelper = new MyOpenHelper(this);
         final SQLiteDatabase db = dbHelper.getReadableDatabase();
-
         if (db != null){
 
             EditText id_tmp = (EditText) findViewById(R.id.edit_id);
@@ -67,9 +61,7 @@ public class ConsultarActivity extends AppCompatActivity {
 
             int identificador = Integer.parseInt(id_tmp.getText().toString());
             Cursor c = db.rawQuery("SELECT _id, nombre, apellido, email, password FROM usuarios WHERE _id="+ identificador, null);
-
             if (c != null){
-
                 c.moveToFirst();
                 nombre_tmp.setText(c.getString(c.getColumnIndex("nombre")).toString());
                 apellido_tmp.setText(c.getString(c.getColumnIndex("apellido")).toString());
@@ -79,7 +71,6 @@ public class ConsultarActivity extends AppCompatActivity {
             c.close();
             db.close();
         }
-
     }
 
     public void editarUsuario(View v){
@@ -107,7 +98,6 @@ public class ConsultarActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Error al actualizar el usuario", Toast.LENGTH_SHORT).show();
             }
-
             db.close();
         }
     }
@@ -129,7 +119,5 @@ public class ConsultarActivity extends AppCompatActivity {
 
             db.close();
         }
-
     }
-
 }

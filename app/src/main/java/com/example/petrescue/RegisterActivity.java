@@ -13,9 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
-
     private Button registerBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +35,6 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     public void guardarUsuario(View v){
@@ -51,7 +47,6 @@ public class RegisterActivity extends AppCompatActivity {
         MyOpenHelper dbHelper = new MyOpenHelper(v.getContext());
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
         if (db != null){
-
             ContentValues cv = new ContentValues();
             cv.put("nombre", nombre_tmp.getText().toString());
             cv.put("apellido", apellido_tmp.getText().toString());
@@ -59,9 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
             cv.put("password", password_tmp.getText().toString());
             db.insert("usuarios", null, cv);
             Toast.makeText(v.getContext(), "Insertado correctamente", Toast.LENGTH_SHORT).show();
-
         }
-        //db.close();
-
+        db.close();
     }
 }
