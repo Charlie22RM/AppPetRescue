@@ -26,22 +26,16 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_consultar = findViewById(R.id.btn_consultar);
-        btn_consultar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, ConsultarActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void guardarUsuario(View v){
 
         EditText nombre_tmp = (EditText) findViewById(R.id.txt_nombre);
         EditText apellido_tmp = (EditText) findViewById(R.id.txt_apellido);
+        EditText telefono_tmp = (EditText) findViewById(R.id.txt_telefono);
+        EditText direccion_tmp = (EditText) findViewById(R.id.txt_direccion);
         EditText email_tmp = (EditText) findViewById(R.id.txt_email);
-        EditText password_tmp = (EditText) findViewById(R.id.txt_direccion);
+        EditText password_tmp = (EditText) findViewById(R.id.txt_password);
 
         MyOpenHelper dbHelper = new MyOpenHelper(v.getContext());
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -49,10 +43,12 @@ public class RegisterActivity extends AppCompatActivity {
             ContentValues cv = new ContentValues();
             cv.put("nombre", nombre_tmp.getText().toString());
             cv.put("apellido", apellido_tmp.getText().toString());
+            cv.put("telefono", telefono_tmp.getText().toString());
+            cv.put("direccion", direccion_tmp.getText().toString());
             cv.put("email", email_tmp.getText().toString());
             cv.put("password", password_tmp.getText().toString());
             db.insert("usuarios", null, cv);
-            Toast.makeText(v.getContext(), "Insertado correctamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(v.getContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
         }
         db.close();
     }

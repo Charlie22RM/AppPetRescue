@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/password_login"
+            android:id="@+id/lg_password"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -21,14 +21,14 @@
             android:drawableStart="@drawable/password"
             android:drawablePadding="16dp"
             android:ems="10"
-            android:hint="Password"
+            android:hint="Contraseña"
             android:inputType="textPassword"
             android:textColor="@color/purple"
             android:textColorHint="@color/purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_login" />
+            app:layout_constraintTop_toBottomOf="@+id/lg_email" />
 
         <ImageView
             android:id="@+id/logo"
@@ -37,7 +37,7 @@
             android:layout_marginTop="64dp"
             android:layout_marginBottom="85dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/email_login"
+            app:layout_constraintBottom_toTopOf="@+id/lg_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -59,7 +59,7 @@
             app:layout_constraintTop_toBottomOf="@+id/logo" />
 
         <EditText
-            android:id="@+id/email_login"
+            android:id="@+id/lg_email"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -84,12 +84,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="32dp"
             android:background="@drawable/button_background"
-            android:text="Login"
+            android:text="Iniciar sesión"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_login" />
+            app:layout_constraintTop_toBottomOf="@+id/lg_password" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -111,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/button_background"
+                android:background="@drawable/second_button_background"
                 android:text="Registrarse"
                 android:textColor="@color/white"
                 android:textSize="20sp"
