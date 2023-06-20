@@ -11,4 +11,9 @@
                 android:color="@color/purple" />
         </shape>
     </item>
+    <item
+        android:width="48dp"
+        android:height="48dp"
+        android:drawable="@drawable/baseline_arrow_drop_down_24"
+        android:gravity="right|center_vertical" />
 </layer-list>
