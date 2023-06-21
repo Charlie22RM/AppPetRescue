@@ -1,8 +1,14 @@
 package com.example.petrescue;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -10,18 +16,29 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainAdopcionActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     private Button registerBtn;
+
+    private ImageView imageView;
+
+    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +58,15 @@ public class MainAdopcionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 guardarMascota(v);
+            }
+        });
+
+        imageView = findViewById(R.id.imageView5);
+        Button fotoBtn = findViewById(R.id.foto_btn);
+        fotoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                seleccionarFoto();
             }
         });
 
@@ -97,11 +123,66 @@ public class MainAdopcionActivity extends AppCompatActivity {
             cv.put("vac2", vacuna2 ? "Parvovirus canino" : "No");
             cv.put("vac3", vacuna3 ? "Moquillo" : "No");
             cv.put("vac4", vacuna4 ? "Hepatitis canina" : "No");
+            cv.put("imagen_path", saveImageToStorage());
 
             db.insert("dogs", null, cv);
             Toast.makeText(v.getContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
         }
 
         //db.close();
+    }
+
+    private void seleccionarFoto() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Seleccionar foto"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri uri = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private String saveImageToStorage() {
+        Bitmap bitmap = getBitmapFromImageView(imageView);
+        if (bitmap != null) {
+            String timeStamp = String.valueOf(System.currentTimeMillis());
+            String imageFileName = "IMG_" + timeStamp + ".jpg";
+
+            try {
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+
+                File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+                if (storageDir != null) {
+                    File imageFile = new File(storageDir, imageFileName);
+                    FileOutputStream fo = new FileOutputStream(imageFile);
+                    fo.write(bytes.toByteArray());
+                    fo.flush();
+                    fo.close();
+                    return imageFile.getAbsolutePath();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return "";
+    }
+
+    private Bitmap getBitmapFromImageView(ImageView imageView) {
+        if (imageView.getDrawable() instanceof BitmapDrawable) {
+            return ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        }
+        return null;
     }
 }

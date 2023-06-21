@@ -21,11 +21,19 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar_main);
 
         Button btn_adopcion = findViewById(R.id.btn_adopcion);
+        Button btn_adoptar = findViewById(R.id.btn_adoptar);
 
         btn_adopcion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainAdopcionActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_adoptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainAdoptarActivity.class);
                 startActivity(intent);
             }
         });
