@@ -165,7 +165,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_password" />
 
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/rg_genero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -174,7 +174,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6">
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/rb_macho"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/purple"
@@ -183,7 +183,7 @@
                 android:text="Quiero adoptar." />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/rb_hembra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/purple"
@@ -208,7 +208,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/rg_genero" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
