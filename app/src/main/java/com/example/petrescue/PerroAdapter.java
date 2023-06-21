@@ -1,10 +1,12 @@
 package com.example.petrescue;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
@@ -24,6 +26,8 @@ public class PerroAdapter extends ArrayAdapter<Perro> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(resource, parent, false);
         }
@@ -39,6 +43,19 @@ public class PerroAdapter extends ArrayAdapter<Perro> {
 
         nombreTextView.setText(perro.getNombre());
         razaTextView.setText(perro.getRaza());
+
+        Button verMasButton = convertView.findViewById(R.id.button_ver_mas);
+        verMasButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, InfoPerrosActivity.class);
+                intent.putExtra("perro_id", perro.getId());
+                intent.putExtra("perro_nombre", perro.getNombre());
+                intent.putExtra("perro_raza", perro.getRaza());
+                // Agrega otros extras según sea necesario
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

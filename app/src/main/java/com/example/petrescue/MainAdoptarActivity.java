@@ -1,5 +1,6 @@
 package com.example.petrescue;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -41,8 +42,9 @@ public class MainAdoptarActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Perro perro = perrosList.get(position);
-                // Realiza alguna acción cuando se hace clic en un perro de la lista
-                Toast.makeText(MainAdoptarActivity.this, "Haz clic en " + perro.getNombre(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainAdoptarActivity.this, InfoPerrosActivity.class);
+                intent.putExtra("perro_id", perro.getId());
+                startActivity(intent);
             }
         });
 
