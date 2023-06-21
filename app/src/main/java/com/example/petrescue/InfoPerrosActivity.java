@@ -3,6 +3,8 @@ package com.example.petrescue;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 public class InfoPerrosActivity extends AppCompatActivity {
 
@@ -73,8 +77,13 @@ public class InfoPerrosActivity extends AppCompatActivity {
 
                 String imagenPath = cursor.getString(cursor.getColumnIndexOrThrow("imagen_path"));
 
+                File imageFile = new File(imagenPath);
+                Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+                imageViewPerro.setImageBitmap(bitmap);
+
                 // Cargar la imagen utilizando Picasso
-                Picasso.get().load(imagenPath).placeholder(R.drawable.baseline_insert_photo_24).into(imageViewPerro);
+                //Picasso.get().load(imagenPath).placeholder(R.drawable.baseline_insert_photo_24).into(imageViewPerro);
+
 
                 nombreTextView.setText(nombre);
                 edadTextView.setText(edad);
