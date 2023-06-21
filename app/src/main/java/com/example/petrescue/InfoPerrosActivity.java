@@ -30,6 +30,7 @@ public class InfoPerrosActivity extends AppCompatActivity {
     private TextView vac4TextView;
 
     private ImageView imageViewPerro;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +85,7 @@ public class InfoPerrosActivity extends AppCompatActivity {
                 vac2TextView.setText(vac2);
                 vac3TextView.setText(vac3);
                 vac4TextView.setText(vac4);
+
             }
 
             cursor.close();
@@ -91,7 +93,7 @@ public class InfoPerrosActivity extends AppCompatActivity {
         }
     }
 
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menu_barra = getMenuInflater();
         menu_barra.inflate(R.menu.menu, menu);
         return true;

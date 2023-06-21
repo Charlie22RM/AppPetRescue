@@ -119,10 +119,10 @@ public class MainAdopcionActivity extends AppCompatActivity {
             cv.put("raza", raza_perro_tmp.getText().toString());
             cv.put("tamaño", tamano);
             cv.put("genero", genero);
-            cv.put("vac1", vacuna1 ? "Rabia" : "No");
-            cv.put("vac2", vacuna2 ? "Parvovirus canino" : "No");
-            cv.put("vac3", vacuna3 ? "Moquillo" : "No");
-            cv.put("vac4", vacuna4 ? "Hepatitis canina" : "No");
+            cv.put("vac1", vacuna1 ? "Si" : "No");
+            cv.put("vac2", vacuna2 ? "Si" : "No");
+            cv.put("vac3", vacuna3 ? "Si" : "No");
+            cv.put("vac4", vacuna4 ? "Si" : "No");
             cv.put("imagen_path", saveImageToStorage());
 
             db.insert("dogs", null, cv);
