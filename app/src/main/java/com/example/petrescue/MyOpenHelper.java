@@ -5,8 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 public class MyOpenHelper extends SQLiteOpenHelper {
     private static final String USER_TABLE_CREATE = "CREATE TABLE usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, telefono TEXT, direccion TEXT, email TEXT, password TEXT)";
-    private static final String DOGS_TABLE_CREATE = "CREATE TABLE dogs(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, edad TEXT, raza TEXT, tamaño TEXT, genero TEXT, vac1 TEXT, vac2 TEXT, vac3 TEXT, vac4 TEXT, imagen_path TEXT)";
-    private static final String DB_NAME = "datosPractica1.sqlite";
+    private static final String DOGS_TABLE_CREATE = "CREATE TABLE dogs(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, edad TEXT, raza TEXT, tamaño TEXT, genero TEXT, vac1 TEXT, vac2 TEXT, vac3 TEXT, vac4 TEXT, imagen_path TEXT, usuario_id INTEGER, FOREIGN KEY(usuario_id) REFERENCES usuarios(id))";
+    private static final String DB_NAME = "datosPractica3.sqlite";
     private static final int DB_VERSION = 1;
     public MyOpenHelper(Context context){
         super(context, DB_NAME, null, DB_VERSION);

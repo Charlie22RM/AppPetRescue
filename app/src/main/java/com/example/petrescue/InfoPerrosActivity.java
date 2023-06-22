@@ -32,7 +32,6 @@ public class InfoPerrosActivity extends AppCompatActivity {
     private TextView vac2TextView;
     private TextView vac3TextView;
     private TextView vac4TextView;
-
     private ImageView imageViewPerro;
 
     @Override
@@ -52,6 +51,7 @@ public class InfoPerrosActivity extends AppCompatActivity {
         vac3TextView = findViewById(R.id.textView_vac3);
         vac4TextView = findViewById(R.id.textView_vac4);
         imageViewPerro = findViewById(R.id.img_perro);
+
 
         int perroId = getIntent().getIntExtra("perro_id", -1);
 

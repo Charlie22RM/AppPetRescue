@@ -49,6 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
             db.insert("usuarios", null, cv);
             Toast.makeText(v.getContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
         }
-        db.close();
+        //db.close();
     }
 }
