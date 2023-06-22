@@ -23,7 +23,7 @@
             android:ems="10"
             android:hint="Raza"
             android:inputType="text"
-            android:textColor="@color/purple"
+            android:textColor="@color/grey"
             android:textColorHint="@color/purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -79,7 +79,7 @@
             android:ems="10"
             android:hint="Nombre"
             android:inputType="text"
-            android:textColor="@color/purple"
+            android:textColor="@color/grey"
             android:textColorHint="@color/purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -99,7 +99,7 @@
             android:ems="10"
             android:hint="Edad (años o meses)"
             android:inputType="text"
-            android:textColor="@color/purple"
+            android:textColor="@color/grey"
             android:textColorHint="@color/purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -144,18 +144,18 @@
                 android:id="@+id/rb_macho"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/purple"
+                android:buttonTint="@color/grey"
                 android:text="Macho"
-                android:textColor="@color/purple"
+                android:textColor="@color/grey"
                 android:textSize="15sp" />
 
             <RadioButton
                 android:id="@+id/rb_hembra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/purple"
+                android:buttonTint="@color/grey"
                 android:text="Hembra"
-                android:textColor="@color/purple"
+                android:textColor="@color/grey"
                 android:textSize="15sp" />
         </RadioGroup>
 
@@ -179,7 +179,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:text="Rabia"
-            android:textColor="@color/purple"
+            android:textColor="@color/grey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -189,7 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/purple"
+            android:textColor="@color/grey"
             android:text="Parvovirus canino"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vac1" />
@@ -200,7 +200,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/purple"
+            android:textColor="@color/grey"
             android:text="Moquillo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vac2" />
@@ -211,7 +211,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/purple"
+            android:textColor="@color/grey"
             android:text="Hepatitis canina"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vac3" />
