@@ -1,5 +1,6 @@
 package com.example.petrescue;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -36,14 +37,15 @@ public class InfoPerrosActivity extends AppCompatActivity {
     private TextView textView_protector;
     private TextView textView_tf;
     private TextView textView_email;
-
+    private MyOpenHelper myOpenHelper;
+    @SuppressLint("Range")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_perros);
         toolbar_info = findViewById(R.id.toolbar_info);
         setSupportActionBar(toolbar_info);
-
+        myOpenHelper = new MyOpenHelper(this);
         Button btn_solic = findViewById(R.id.btn_solicitud);
 
         btn_solic.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +68,7 @@ public class InfoPerrosActivity extends AppCompatActivity {
         imageViewPerro = findViewById(R.id.img_perro);
         textView_protector=findViewById(R.id.textView_protector);
         textView_tf=findViewById(R.id.textView_tf);
-        textView_tf=findViewById(R.id.textView_email);
+        textView_email=findViewById(R.id.textView_email);
 
         int perroId = getIntent().getIntExtra("perro_id", -1);
 
@@ -78,7 +80,7 @@ public class InfoPerrosActivity extends AppCompatActivity {
             String selection = "id = ?";
             String[] selectionArgs = {String.valueOf(perroId)};
             Cursor cursor = db.query("dogs", projection, selection, selectionArgs, null, null, null);
-
+            System.out.println("Prueba 1");
             int usuario_id = 0;
             if (cursor.moveToFirst()) {
                 String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
@@ -90,9 +92,10 @@ public class InfoPerrosActivity extends AppCompatActivity {
                 String vac2 = cursor.getString(cursor.getColumnIndexOrThrow("vac2"));
                 String vac3 = cursor.getString(cursor.getColumnIndexOrThrow("vac3"));
                 String vac4 = cursor.getString(cursor.getColumnIndexOrThrow("vac4"));
-
+                System.out.println("Prueba 2");
                 String imagenPath = cursor.getString(cursor.getColumnIndexOrThrow("imagen_path"));
                 usuario_id = cursor.getInt(cursor.getColumnIndexOrThrow("usuario_id"));
+                System.out.println("Usuario: "+usuario_id);
                 File imageFile = new File(imagenPath);
                 Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
                 imageViewPerro.setImageBitmap(bitmap);
@@ -109,12 +112,9 @@ public class InfoPerrosActivity extends AppCompatActivity {
                 vac2TextView.setText(vac2);
                 vac3TextView.setText(vac3);
                 vac4TextView.setText(vac4);
+                validateLogin(usuario_id);
 
             }
-            projection = new String[]{"nombre", "telefono", "email"};
-            selection = "usuario_id = ?";
-            selectionArgs = new String[]{String.valueOf(usuario_id)};
-            cursor = db.query("usuarios", projection, selection, selectionArgs, null, null, null);
             cursor.close();
             db.close();
         }
@@ -124,5 +124,29 @@ public class InfoPerrosActivity extends AppCompatActivity {
         MenuInflater menu_barra = getMenuInflater();
         menu_barra.inflate(R.menu.menu, menu);
         return true;
+    }
+
+    @SuppressLint("Range")
+    private boolean validateLogin(int userId) {
+        SQLiteDatabase db = myOpenHelper.getReadableDatabase();
+
+        String query = "SELECT * FROM usuarios WHERE id = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId)});
+        boolean loginSuccessful = cursor.moveToFirst();
+        if (loginSuccessful) {
+            userId = cursor.getInt(cursor.getColumnIndex("id"));
+            String asd = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+            System.out.println("email: "+asd);
+            String protector = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
+            String tf = cursor.getString(cursor.getColumnIndexOrThrow("telefono"));
+            textView_protector.setText(protector);
+            textView_tf.setText(tf);
+            textView_email.setText(asd);
+        }
+
+        cursor.close();
+        db.close();
+
+        return loginSuccessful;
     }
 }
