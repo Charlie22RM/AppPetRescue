@@ -66,7 +66,7 @@ public class InfoPerrosActivity extends AppCompatActivity {
         imageViewPerro = findViewById(R.id.img_perro);
         textView_protector=findViewById(R.id.textView_protector);
         textView_tf=findViewById(R.id.textView_tf);
-        textView_tf=findViewById(R.id.textView_email);
+        textView_email=findViewById(R.id.textView_email);
 
         int perroId = getIntent().getIntExtra("perro_id", -1);
 
@@ -78,7 +78,7 @@ public class InfoPerrosActivity extends AppCompatActivity {
             String selection = "id = ?";
             String[] selectionArgs = {String.valueOf(perroId)};
             Cursor cursor = db.query("dogs", projection, selection, selectionArgs, null, null, null);
-
+            System.out.println("Prueba 1");
             int usuario_id = 0;
             if (cursor.moveToFirst()) {
                 String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
@@ -90,9 +90,10 @@ public class InfoPerrosActivity extends AppCompatActivity {
                 String vac2 = cursor.getString(cursor.getColumnIndexOrThrow("vac2"));
                 String vac3 = cursor.getString(cursor.getColumnIndexOrThrow("vac3"));
                 String vac4 = cursor.getString(cursor.getColumnIndexOrThrow("vac4"));
-
+                System.out.println("Prueba 2");
                 String imagenPath = cursor.getString(cursor.getColumnIndexOrThrow("imagen_path"));
                 usuario_id = cursor.getInt(cursor.getColumnIndexOrThrow("usuario_id"));
+                System.out.println("Usuario: "+usuario_id);
                 File imageFile = new File(imagenPath);
                 Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
                 imageViewPerro.setImageBitmap(bitmap);
@@ -110,12 +111,32 @@ public class InfoPerrosActivity extends AppCompatActivity {
                 vac2TextView.setText(vac2);
                 vac3TextView.setText(vac3);
                 vac4TextView.setText(vac4);
+                String query1 = "SELECT * FROM usuarios WHERE id = ?";
+                Cursor cursor1 = db.rawQuery(query1, new String[]{String.valueOf(usuario_id)});
+
+                if (cursor1.moveToFirst()){
+                    System.out.println("SI funciona");
+                    System.out.println(cursor1);
+                    String protector = cursor1.getString(cursor.getColumnIndexOrThrow("nombre"));
+                    textView_protector.setText(protector);
+                    //String asd = cursor1.getString(cursor.getColumnIndexOrThrow("email"));
+                    //String tf = cursor1.getString(cursor.getColumnIndexOrThrow("email"));
+                    //textView_tf.setText(tf);
+                }
+                cursor1.close();
+                /*
+                if (cursor1.moveToFirst()){
+                    String protector = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
+                    String tf = cursor.getString(cursor.getColumnIndexOrThrow("telefono"));
+                    String  email= cursor.getString(cursor.getColumnIndexOrThrow("email"));
+                    textView_protector.setText(protector);
+                    textView_tf.setText(tf);
+                    textView_email.setText(email);
+                }
+                cursor1.close();
+                */
 
             }
-            projection = new String[]{"nombre", "telefono", "email"};
-            selection = "usuario_id = ?";
-            selectionArgs = new String[]{String.valueOf(usuario_id)};
-            cursor = db.query("usuarios", projection, selection, selectionArgs, null, null, null);
             cursor.close();
             db.close();
         }
