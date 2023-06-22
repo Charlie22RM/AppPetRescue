@@ -79,7 +79,7 @@ public class SolicAdopcionActivity extends AppCompatActivity {
 
         if (db != null) {
             ContentValues cv = new ContentValues();
-            cv.put("nombre", nombres_tmp.getText().toString());
+            cv.put("nombres", nombres_tmp.getText().toString());
             cv.put("telefono", numero_tmp.getText().toString());
             cv.put("interes", interes_tmp.getText().toString());
             cv.put("vivienda", vivienda);

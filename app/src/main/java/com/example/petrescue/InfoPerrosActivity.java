@@ -100,7 +100,6 @@ public class InfoPerrosActivity extends AppCompatActivity {
                 // Cargar la imagen utilizando Picasso
                 //Picasso.get().load(imagenPath).placeholder(R.drawable.baseline_insert_photo_24).into(imageViewPerro);
 
-
                 nombreTextView.setText(nombre);
                 edadTextView.setText(edad);
                 razaTextView.setText(raza);
