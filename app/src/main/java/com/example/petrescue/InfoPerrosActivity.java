@@ -33,6 +33,9 @@ public class InfoPerrosActivity extends AppCompatActivity {
     private TextView vac3TextView;
     private TextView vac4TextView;
     private ImageView imageViewPerro;
+    private TextView textView_protector;
+    private TextView textView_tf;
+    private TextView textView_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +64,9 @@ public class InfoPerrosActivity extends AppCompatActivity {
         vac3TextView = findViewById(R.id.textView_vac3);
         vac4TextView = findViewById(R.id.textView_vac4);
         imageViewPerro = findViewById(R.id.img_perro);
-
+        textView_protector=findViewById(R.id.textView_protector);
+        textView_tf=findViewById(R.id.textView_tf);
+        textView_tf=findViewById(R.id.textView_email);
 
         int perroId = getIntent().getIntExtra("perro_id", -1);
 
@@ -69,11 +74,12 @@ public class InfoPerrosActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         if (db != null) {
-            String[] projection = {"nombre", "edad", "raza", "tamaño", "genero", "vac1", "vac2", "vac3", "vac4", "imagen_path"};
+            String[] projection = {"nombre", "edad", "raza", "tamaño", "genero", "vac1", "vac2", "vac3", "vac4", "imagen_path", "usuario_id"};
             String selection = "id = ?";
             String[] selectionArgs = {String.valueOf(perroId)};
             Cursor cursor = db.query("dogs", projection, selection, selectionArgs, null, null, null);
 
+            int usuario_id = 0;
             if (cursor.moveToFirst()) {
                 String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
                 String edad = cursor.getString(cursor.getColumnIndexOrThrow("edad"));
@@ -86,7 +92,7 @@ public class InfoPerrosActivity extends AppCompatActivity {
                 String vac4 = cursor.getString(cursor.getColumnIndexOrThrow("vac4"));
 
                 String imagenPath = cursor.getString(cursor.getColumnIndexOrThrow("imagen_path"));
-
+                usuario_id = cursor.getInt(cursor.getColumnIndexOrThrow("usuario_id"));
                 File imageFile = new File(imagenPath);
                 Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
                 imageViewPerro.setImageBitmap(bitmap);
@@ -106,7 +112,10 @@ public class InfoPerrosActivity extends AppCompatActivity {
                 vac4TextView.setText(vac4);
 
             }
-
+            projection = new String[]{"nombre", "telefono", "email"};
+            selection = "usuario_id = ?";
+            selectionArgs = new String[]{String.valueOf(usuario_id)};
+            cursor = db.query("usuarios", projection, selection, selectionArgs, null, null, null);
             cursor.close();
             db.close();
         }

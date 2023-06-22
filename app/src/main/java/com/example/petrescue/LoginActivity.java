@@ -2,6 +2,7 @@ package com.example.petrescue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextPassword;
     private MyOpenHelper myOpenHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,13 +57,19 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("Range")
     private boolean validateLogin(String email, String password) {
         SQLiteDatabase db = myOpenHelper.getReadableDatabase();
 
         String query = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
         Cursor cursor = db.rawQuery(query, new String[]{email, password});
-
+        int userId = -1;
         boolean loginSuccessful = cursor.moveToFirst();
+        if (loginSuccessful) {
+            userId = cursor.getInt(cursor.getColumnIndex("id"));
+            UserService userService= UserService.getInstancia();
+            userService.setUserId(userId);
+        }
 
         cursor.close();
         db.close();

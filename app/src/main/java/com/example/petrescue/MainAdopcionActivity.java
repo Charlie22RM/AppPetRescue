@@ -123,7 +123,8 @@ public class MainAdopcionActivity extends AppCompatActivity {
             cv.put("vac3", vacuna3 ? "Si" : "No");
             cv.put("vac4", vacuna4 ? "Si" : "No");
             cv.put("imagen_path", saveImageToStorage());
-
+            UserService userService= UserService.getInstancia();
+            cv.put("usuario_id",userService.getUserId());
             db.insert("dogs", null, cv);
             Toast.makeText(v.getContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
         }
