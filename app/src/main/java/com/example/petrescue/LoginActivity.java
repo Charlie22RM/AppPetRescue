@@ -67,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
         boolean loginSuccessful = cursor.moveToFirst();
         if (loginSuccessful) {
             userId = cursor.getInt(cursor.getColumnIndex("id"));
+            String asd = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+            System.out.println("email: "+asd);
             UserService userService= UserService.getInstancia();
             userService.setUserId(userId);
         }
