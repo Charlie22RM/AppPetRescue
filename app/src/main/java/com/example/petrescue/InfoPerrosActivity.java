@@ -41,6 +41,16 @@ public class InfoPerrosActivity extends AppCompatActivity {
         toolbar_info = findViewById(R.id.toolbar_info);
         setSupportActionBar(toolbar_info);
 
+        Button btn_solic = findViewById(R.id.btn_solicitud);
+
+        btn_solic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InfoPerrosActivity.this, SolicAdopcionActivity.class);
+                startActivity(intent);
+            }
+        });
+
         nombreTextView = findViewById(R.id.textView_nb);
         edadTextView = findViewById(R.id.textView_edad);
         razaTextView = findViewById(R.id.textView_raza);
