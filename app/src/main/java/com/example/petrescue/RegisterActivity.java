@@ -1,6 +1,7 @@
 package com.example.petrescue;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        Button btn_inic_ses = findViewById(R.id.btn_inc_ses);
         registerBtn = findViewById(R.id.btn_crear_cuenta);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,6 +27,13 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        btn_inic_ses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void guardarUsuario(View v){

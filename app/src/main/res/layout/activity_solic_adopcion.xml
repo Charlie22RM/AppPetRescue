@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/AppTheme">
@@ -212,12 +213,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:text="¿Tienes un patio o espacio al aire libre?"
+            android:text="¿Cuánto tiempo pasarás con el perro cada día?"
             android:textColor="@color/purple"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rg_espacio" />
+
+        <Button
+            android:id="@+id/btn_solicitudes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rg_tiempo" />/>
 
         <RadioGroup
             android:id="@+id/rg_tiempo"
@@ -254,6 +267,7 @@
                 android:text="Más de 5 horas al día."
                 android:textColor="@color/grey"
                 android:textSize="15sp" />
+
         </RadioGroup>
 
 

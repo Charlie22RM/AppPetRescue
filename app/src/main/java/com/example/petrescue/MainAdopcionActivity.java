@@ -84,7 +84,6 @@ public class MainAdopcionActivity extends AppCompatActivity {
         EditText edad_perro_tmp = (EditText) findViewById(R.id.txt_edad_perro);
         EditText raza_perro_tmp = (EditText) findViewById(R.id.txt_raza_perro);
 
-
         Spinner tamanoSpinner = findViewById(R.id.spn_tamano);
         String tamano = tamanoSpinner.getSelectedItem().toString();
 

@@ -29,9 +29,6 @@
             android:name=".MainAdoptarActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterDogActivity"
-            android:exported="false" />
-        <activity
             android:name=".ConsultarActivity"
             android:exported="false" />
         <activity
