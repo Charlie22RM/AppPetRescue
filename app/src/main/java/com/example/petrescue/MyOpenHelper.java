@@ -10,7 +10,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
 
     private static final String SOLICITUD_TABLE_CREATE = "CREATE TABLE solicitudes(id INTEGER PRIMARY KEY AUTOINCREMENT, nombres TEXT, telefono TEXT, interes TEXT, vivienda TEXT, espacio TEXT, tiempo TEXT, usuario_id INTEGER, FOREIGN KEY(usuario_id) REFERENCES usuarios(id))";
 
-    private static final String DB_NAME = "datosPractica4.sqlite";
+    private static final String DB_NAME = "Proyecto1.sqlite";
     private static final int DB_VERSION = 1;
 
     public MyOpenHelper(Context context) {

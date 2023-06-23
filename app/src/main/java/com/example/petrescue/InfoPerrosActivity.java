@@ -154,13 +154,13 @@ public class InfoPerrosActivity extends AppCompatActivity {
         boolean loginSuccessful = cursor.moveToFirst();
         if (loginSuccessful) {
             userId = cursor.getInt(cursor.getColumnIndex("id"));
-            String asd = cursor.getString(cursor.getColumnIndexOrThrow("email"));
-            System.out.println("email: " + asd);
+            String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+            System.out.println("email: " + email);
             String protector = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
             String tf = cursor.getString(cursor.getColumnIndexOrThrow("telefono"));
             textView_protector.setText(protector);
             textView_tf.setText(tf);
-            textView_email.setText(asd);
+            textView_email.setText(email);
         }
         cursor.close();
         db.close();
