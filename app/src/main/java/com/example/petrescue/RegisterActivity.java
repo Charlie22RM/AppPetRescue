@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
     private Button registerBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    public void guardarUsuario(View v){
+    public void guardarUsuario(View v) {
 
         EditText nombre_tmp = (EditText) findViewById(R.id.txt_nombre);
         EditText apellido_tmp = (EditText) findViewById(R.id.txt_apellido);
@@ -47,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         MyOpenHelper dbHelper = new MyOpenHelper(v.getContext());
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
-        if (db != null){
+        if (db != null) {
             ContentValues cv = new ContentValues();
             cv.put("nombre", nombre_tmp.getText().toString());
             cv.put("apellido", apellido_tmp.getText().toString());

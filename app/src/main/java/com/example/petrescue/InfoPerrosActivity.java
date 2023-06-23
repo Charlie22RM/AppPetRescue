@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,7 +23,6 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 
 public class InfoPerrosActivity extends AppCompatActivity {
-
     private Toolbar toolbar_info;
     private TextView nombreTextView;
     private TextView edadTextView;
@@ -38,6 +38,7 @@ public class InfoPerrosActivity extends AppCompatActivity {
     private TextView textView_tf;
     private TextView textView_email;
     private MyOpenHelper myOpenHelper;
+
     @SuppressLint("Range")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +67,9 @@ public class InfoPerrosActivity extends AppCompatActivity {
         vac3TextView = findViewById(R.id.textView_vac3);
         vac4TextView = findViewById(R.id.textView_vac4);
         imageViewPerro = findViewById(R.id.img_perro);
-        textView_protector=findViewById(R.id.textView_protector);
-        textView_tf=findViewById(R.id.textView_tf);
-        textView_email=findViewById(R.id.textView_email);
+        textView_protector = findViewById(R.id.textView_protector);
+        textView_tf = findViewById(R.id.textView_tf);
+        textView_email = findViewById(R.id.textView_email);
 
         int perroId = getIntent().getIntExtra("perro_id", -1);
 
@@ -95,13 +96,10 @@ public class InfoPerrosActivity extends AppCompatActivity {
                 System.out.println("Prueba 2");
                 String imagenPath = cursor.getString(cursor.getColumnIndexOrThrow("imagen_path"));
                 usuario_id = cursor.getInt(cursor.getColumnIndexOrThrow("usuario_id"));
-                System.out.println("Usuario: "+usuario_id);
+                System.out.println("Usuario: " + usuario_id);
                 File imageFile = new File(imagenPath);
                 Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
                 imageViewPerro.setImageBitmap(bitmap);
-
-                // Cargar la imagen utilizando Picasso
-                //Picasso.get().load(imagenPath).placeholder(R.drawable.baseline_insert_photo_24).into(imageViewPerro);
 
                 nombreTextView.setText(nombre);
                 edadTextView.setText(edad);
@@ -113,7 +111,6 @@ public class InfoPerrosActivity extends AppCompatActivity {
                 vac3TextView.setText(vac3);
                 vac4TextView.setText(vac4);
                 validateLogin(usuario_id);
-
             }
             cursor.close();
             db.close();
@@ -124,6 +121,28 @@ public class InfoPerrosActivity extends AppCompatActivity {
         MenuInflater menu_barra = getMenuInflater();
         menu_barra.inflate(R.menu.menu, menu);
         return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Verificar qué opción del menú se seleccionó
+        int id = item.getItemId();
+        if (id == R.id.opc1) {
+            // Acción para la opción "Adoptar"
+            Intent adoptarIntent = new Intent(InfoPerrosActivity.this, MainAdoptarActivity.class);
+            startActivity(adoptarIntent);
+            return true;
+        } else if (id == R.id.opc2) {
+            // Acción para la opción "Dar en adopción"
+            Intent darEnAdopcionIntent = new Intent(InfoPerrosActivity.this, MainAdopcionActivity.class);
+            startActivity(darEnAdopcionIntent);
+            return true;
+        } else if (id == R.id.opc3) {
+            // Acción para la opción "Cerrar sesión"
+            Intent salirIntent = new Intent(InfoPerrosActivity.this, LoginActivity.class);
+            startActivity(salirIntent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     @SuppressLint("Range")
@@ -136,17 +155,15 @@ public class InfoPerrosActivity extends AppCompatActivity {
         if (loginSuccessful) {
             userId = cursor.getInt(cursor.getColumnIndex("id"));
             String asd = cursor.getString(cursor.getColumnIndexOrThrow("email"));
-            System.out.println("email: "+asd);
+            System.out.println("email: " + asd);
             String protector = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
             String tf = cursor.getString(cursor.getColumnIndexOrThrow("telefono"));
             textView_protector.setText(protector);
             textView_tf.setText(tf);
             textView_email.setText(asd);
         }
-
         cursor.close();
         db.close();
-
         return loginSuccessful;
     }
 }

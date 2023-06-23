@@ -12,22 +12,17 @@ public class Perro {
         this.raza = raza;
         this.imagenPath = imagenPath;
     }
-
     public int getId() {
         return id;
     }
-
     public String getNombre() {
         return nombre;
     }
-
     public String getRaza() {
         return raza;
     }
-
     public String getImagenPath() {
         System.out.println("Ruta de la imagen: " + imagenPath);
         return imagenPath;
     }
-
 }

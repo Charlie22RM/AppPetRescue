@@ -8,6 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@drawable/fondo"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
@@ -74,9 +75,9 @@
                 android:id="@+id/textView_nb"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -109,8 +110,8 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -143,8 +144,8 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -177,8 +178,8 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -211,8 +212,8 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -258,8 +259,8 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -292,8 +293,8 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -326,8 +327,8 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -360,8 +361,8 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -407,8 +408,8 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -441,8 +442,8 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -475,8 +476,8 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
         </LinearLayout>
 

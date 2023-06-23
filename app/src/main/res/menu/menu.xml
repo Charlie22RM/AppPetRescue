@@ -4,19 +4,19 @@
 
     <item
         android:id="@+id/opc"
-        android:icon="@drawable/baseline_menu_24"
+        android:icon="@drawable/baseline_more_vert_24"
         android:title="opc"
         app:showAsAction="always">
         <menu>
             <item
                 android:id="@+id/opc1"
-                android:title="Perfil" />
+                android:title="Adoptar" />
             <item
                 android:id="@+id/opc2"
-                android:title="Configuración" />
+                android:title="Dar en adopción" />
             <item
                 android:id="@+id/opc3"
-                android:title="Acerca de" />
+                android:title="Cerrar sesión" />
         </menu>
     </item>
 </menu>

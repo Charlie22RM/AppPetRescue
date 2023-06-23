@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainAdoptarActivity extends AppCompatActivity {
-
     private Toolbar toolbar_adoptar;
 
     private ListView listView_perros;
@@ -47,7 +47,6 @@ public class MainAdoptarActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         cargarPerrosDesdeBD();
     }
 
@@ -68,11 +67,9 @@ public class MainAdoptarActivity extends AppCompatActivity {
                 Perro perro = new Perro(id, nombre, raza, imagenPath);
                 perrosList.add(perro);
             }
-
             cursor.close();
             db.close();
         }
-
         perroAdapter.notifyDataSetChanged();
     }
 
@@ -81,5 +78,27 @@ public class MainAdoptarActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu, menu);
         return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Verificar qué opción del menú se seleccionó
+        int id = item.getItemId();
+        if (id == R.id.opc1) {
+            // Acción para la opción "Adoptar"
+            Intent adoptarIntent = new Intent(MainAdoptarActivity.this, MainAdoptarActivity.class);
+            startActivity(adoptarIntent);
+            return true;
+        } else if (id == R.id.opc2) {
+            // Acción para la opción "Dar en adopción"
+            Intent darEnAdopcionIntent = new Intent(MainAdoptarActivity.this, MainAdopcionActivity.class);
+            startActivity(darEnAdopcionIntent);
+            return true;
+        } else if (id == R.id.opc3) {
+            // Acción para la opción "Cerrar sesión"
+            Intent salirIntent = new Intent(MainAdoptarActivity.this, LoginActivity.class);
+            startActivity(salirIntent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 }

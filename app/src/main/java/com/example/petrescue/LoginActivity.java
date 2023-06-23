@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
-
     private EditText editTextEmail;
     private EditText editTextPassword;
     private MyOpenHelper myOpenHelper;
@@ -68,14 +67,12 @@ public class LoginActivity extends AppCompatActivity {
         if (loginSuccessful) {
             userId = cursor.getInt(cursor.getColumnIndex("id"));
             String asd = cursor.getString(cursor.getColumnIndexOrThrow("email"));
-            System.out.println("email: "+asd);
-            UserService userService= UserService.getInstancia();
+            System.out.println("email: " + asd);
+            UserService userService = UserService.getInstancia();
             userService.setUserId(userId);
         }
-
         cursor.close();
         db.close();
-
         return loginSuccessful;
     }
 }

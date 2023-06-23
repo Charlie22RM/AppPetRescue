@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -33,11 +34,8 @@ import java.io.IOException;
 
 public class MainAdopcionActivity extends AppCompatActivity {
     private Toolbar toolbar;
-
     private Button registerBtn;
-
     private ImageView imageView;
-
     private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
@@ -69,13 +67,35 @@ public class MainAdopcionActivity extends AppCompatActivity {
                 seleccionarFoto();
             }
         });
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menu_barra = getMenuInflater();
         menu_barra.inflate(R.menu.menu, menu);
         return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Verificar qué opción del menú se seleccionó
+        int id = item.getItemId();
+        if (id == R.id.opc1) {
+            // Acción para la opción "Adoptar"
+            Intent adoptarIntent = new Intent(MainAdopcionActivity.this, MainAdoptarActivity.class);
+            startActivity(adoptarIntent);
+            return true;
+        } else if (id == R.id.opc2) {
+            // Acción para la opción "Dar en adopción"
+            Intent darEnAdopcionIntent = new Intent(MainAdopcionActivity.this, MainAdopcionActivity.class);
+            startActivity(darEnAdopcionIntent);
+            return true;
+        } else if (id == R.id.opc3) {
+            // Acción para la opción "Cerrar sesión"
+            Intent salirIntent = new Intent(MainAdopcionActivity.this, LoginActivity.class);
+            startActivity(salirIntent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     public void guardarMascota(View v) {
@@ -123,12 +143,11 @@ public class MainAdopcionActivity extends AppCompatActivity {
             cv.put("vac3", vacuna3 ? "Si" : "No");
             cv.put("vac4", vacuna4 ? "Si" : "No");
             cv.put("imagen_path", saveImageToStorage());
-            UserService userService= UserService.getInstancia();
-            cv.put("usuario_id",userService.getUserId());
+            UserService userService = UserService.getInstancia();
+            cv.put("usuario_id", userService.getUserId());
             db.insert("dogs", null, cv);
             Toast.makeText(v.getContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
         }
-
         //db.close();
     }
 

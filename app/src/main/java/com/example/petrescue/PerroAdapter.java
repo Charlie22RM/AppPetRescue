@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -31,7 +32,6 @@ public class PerroAdapter extends ArrayAdapter<Perro> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(resource, parent, false);
         }
@@ -42,8 +42,6 @@ public class PerroAdapter extends ArrayAdapter<Perro> {
         TextView nombreTextView = convertView.findViewById(R.id.textView_nombre_perro);
         TextView razaTextView = convertView.findViewById(R.id.textView_raza_perro);
 
-        // Cargar la imagen utilizando Picasso
-        //Picasso.get().load(perro.getImagenPath()).placeholder(R.drawable.baseline_insert_photo_24).into(imageViewPerro);
         File imageFile = new File(perro.getImagenPath());
         Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
         imageViewPerro.setImageBitmap(bitmap);

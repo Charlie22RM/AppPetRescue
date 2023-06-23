@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -19,10 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class SolicAdopcionActivity extends AppCompatActivity {
-
     private Toolbar toolbar_solic;
 
     private Button solicitudBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,6 @@ public class SolicAdopcionActivity extends AppCompatActivity {
                 guardarSolicitud(v);
             }
         });
-
     }
 
     public void guardarSolicitud(View v) {
@@ -73,7 +73,6 @@ public class SolicAdopcionActivity extends AppCompatActivity {
             tiempo = radioButton.getText().toString();
         }
 
-
         MyOpenHelper dbHelper = new MyOpenHelper(v.getContext());
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -89,13 +88,34 @@ public class SolicAdopcionActivity extends AppCompatActivity {
             db.insert("solicitudes", null, cv);
             Toast.makeText(v.getContext(), "Solicitud enviada", Toast.LENGTH_SHORT).show();
         }
-
         //db.close();
     }
 
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menu_barra = getMenuInflater();
         menu_barra.inflate(R.menu.menu, menu);
         return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Verificar qué opción del menú se seleccionó
+        int id = item.getItemId();
+        if (id == R.id.opc1) {
+            // Acción para la opción "Adoptar"
+            Intent adoptarIntent = new Intent(SolicAdopcionActivity.this, MainAdoptarActivity.class);
+            startActivity(adoptarIntent);
+            return true;
+        } else if (id == R.id.opc2) {
+            // Acción para la opción "Dar en adopción"
+            Intent darEnAdopcionIntent = new Intent(SolicAdopcionActivity.this, MainAdopcionActivity.class);
+            startActivity(darEnAdopcionIntent);
+            return true;
+        } else if (id == R.id.opc3) {
+            // Acción para la opción "Cerrar sesión"
+            Intent salirIntent = new Intent(SolicAdopcionActivity.this, LoginActivity.class);
+            startActivity(salirIntent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 }

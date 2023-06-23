@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ConsultarActivity extends AppCompatActivity {
-
     private Button buscarBtn;
     private Button editarBtn;
     private Button eliminarBtn;
